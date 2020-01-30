@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/ThiagoSousaSantana/rest-aurant
+          search-paths:
+            - "config-server-properties/{application}/{profile}"
