@@ -5,4 +5,4 @@ spring:
         git:
           uri: https://github.com/ThiagoSousaSantana/rest-aurant
           search-paths:
-            - "config-server-properties/{application}/{profile}"
+            - "config-properties/{application}/{profile}"
