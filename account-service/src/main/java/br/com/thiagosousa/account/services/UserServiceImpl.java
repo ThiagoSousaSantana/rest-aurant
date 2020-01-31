@@ -11,11 +11,17 @@ import br.com.thiagosousa.account.repositories.UserRepository;
 public class UserServiceImpl implements UserService{
 	
 	@Value("${spring.kafka.topic.userCreated}")
-	private static String USER_CREATED_TOPIC;
+	private String USER_CREATED_TOPIC;
 	 
 	private UserRepository userRepository;
 	private Sender sender;
 	 
+	public UserServiceImpl(UserRepository userRepository, Sender sender) {
+		super();
+		this.userRepository = userRepository;
+		this.sender = sender;
+	}
+
 	@Override
 	public User registerUser(User input) {
 	    User createdUser = userRepository.save(input);
