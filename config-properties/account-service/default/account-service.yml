@@ -10,4 +10,4 @@ spring:
   kafka:
     bootstrap-servers: "localhost:9092"
     template:
-      default-topic: USER_CREATED_TOPIC
+      userCreated: USER_CREATED_TOPIC
