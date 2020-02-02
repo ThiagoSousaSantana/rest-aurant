@@ -18,9 +18,9 @@ public class Receiver {
     private EmailService emailService;
 
     @KafkaListener(topics = "${spring.kafka.topic.userCreated}")
-    public void receive(UserDto payload) {
-        log.info("received payload='{}'", payload);
-        emailService.sendSimpleMessage(payload);
+    public void receive(UserDto input) {
+        log.info("received payload='{}'", input);
+        emailService.sendSimpleMessage(input);
         latch.countDown();
     }
 }

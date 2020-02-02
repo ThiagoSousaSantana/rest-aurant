@@ -44,7 +44,7 @@ public class ReceiverConfig {
         ConcurrentKafkaListenerContainerFactory<String, UserDto> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
- 
+        
         return factory;
     }
  
