@@ -9,7 +9,9 @@ import org.springframework.stereotype.Component;
 import br.com.thiagosousa.emailservice.models.Mail;
 import br.com.thiagosousa.emailservice.models.dto.UserDto;
 import br.com.thiagosousa.emailservice.repositories.MailRepository;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Component
 public class EmailServiceImpl implements EmailService {
   
@@ -25,8 +27,8 @@ public class EmailServiceImpl implements EmailService {
 
             Mail newMail = new Mail();
             newMail.setTo(input.getUsername());
-            newMail.setSubject("TestSubject");
-            newMail.setText("TestText");
+            newMail.setSubject("User confirmation");
+            newMail.setText(input.toString());
 
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(newMail.getTo());
@@ -36,7 +38,7 @@ public class EmailServiceImpl implements EmailService {
             mailRepository.save(newMail);
             emailSender.send(message);
         } catch (MailException exception) {
-            exception.printStackTrace();
+            log.error(exception.getLocalizedMessage());
         }
 
     }
