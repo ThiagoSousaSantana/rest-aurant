@@ -1,5 +1,7 @@
 package br.com.thiagosousa.account.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +25,7 @@ public class UserController {
 	}
 	 
 	@PostMapping("/member")
-	public ResponseEntity<User> register(@RequestBody User input) {
+	public ResponseEntity<User> register(@RequestBody @Valid User input) {
 	    User result = userService.registerUser(input);
 	    return ResponseEntity.ok(result);
 	}

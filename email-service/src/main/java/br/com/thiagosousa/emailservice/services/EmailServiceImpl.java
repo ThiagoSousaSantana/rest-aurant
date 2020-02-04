@@ -36,7 +36,9 @@ public class EmailServiceImpl implements EmailService {
             message.setText(newMail.getText());
 
             mailRepository.save(newMail);
+            log.info("Sending e-mail to {}", input.getUsername());
             emailSender.send(message);
+            log.info("Sent e-mail to {}", input.getUsername());
         } catch (MailException exception) {
             log.error(exception.getLocalizedMessage());
         }
